@@ -1,0 +1,83 @@
+\documentclass[12pt]{article}
+
+\usepackage[normalem]{ulem}										% Used for strikethrough text with the \sout{} command
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{epstopdf}
+\usepackage{caption}
+\usepackage{subcaption}
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}		% Everything before \usepackage helps with the wrapping of urls
+\usepackage{pdfcomment}
+
+\geometry{
+letterpaper,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in
+}
+
+\hypersetup{
+colorlinks,linkcolor=blue,citecolor=violet,urlcolor=magenta
+}
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+\begin{document}
+\title{Smart Vibes Project Log}
+\author{Ezequiel Juarez Garcia}
+\date{Starting on January 23, 2017}
+\maketitle
+
+\newpage
+
+\section*{Monday, January 23, 2017}
+\begin{itemize}
+\item Worked on first presentation and report on Google Drive.
+\item Converted the Google Doc into a Latex doc
+\end{itemize}
+
+\section*{Tuesday, January 24, 2017}
+\begin{itemize}
+\item I was chosen as team leader by Joshua due to his busy schedule impeding him from leading.
+\item Performed presentation 1.
+\item Jordan bought a Feather for about \$40 in order to start programming it. The reason he bought it on his own is because we don't know when the parts will get ordered.
+\item Submitted first presentation and report to Git repo. Also submitted two peer assessments of Positive Resonance and Intellisense teams.
+\end{itemize}
+
+\textbf{To do list:}
+\begin{itemize}
+\item \sout{Fix system level design overview.} (Completed on 1/27/2017)
+\item \sout{Create a Github private repo to host Design 2 group work.} (Completed on 1/27/2017)
+\end{itemize}
+
+\section*{Thursday, January 26, 2017}
+\begin{itemize}
+\item Submitted peer assessments for Poly Builders, Team Concrete, and Phoenix Designs.
+\end{itemize}
+
+\section*{Friday, January 27, 2017}
+\begin{itemize}
+\item Created a private Githup repo named Design 2 for our group to host code and other work.
+\item Begin working with Adafruit Feather that Jordan ordered and received
+\item Learning objectives for Adafruit Feather:
+	\begin{itemize}
+	\item Write up a simple LED program
+	\item Use SPI
+	\item Connect using the built-in Wifi module
+	\end{itemize}
+\item Setup procedure for Adafruit Feather:
+	\begin{enumerate}
+	\item Insert the header pins on a breadboard and place the Feather on top of the pins. No soldering required.
+	\item Went to the following website: \url{https://learn.adafruit.com/adafruit-feather-m0-wifi-atwinc1500/}.
+	\item Download and install Arduino IDE v1.6.4+.
+	\item Go to \texttt{File} $\rightarrow$ \texttt{Preferences}. Type in \url{https://adafruit.github.io/arduino-board-index/package_adafruit_index.json} into the \textbf{Additional Boards Manager URLs} box.
+	\item Navigate to \texttt{Tools} $\rightarrow$ \texttt{Boards} $\rightarrow$ \texttt{Boards Manager}. Install \textbf{Arduino SAMD Boards} version 1.6.8
+	\item Install the \textbf{Adafruit SAMD} package.
+	\item Quit and reopen Arduino IDE. After restart, new boards will be listed on \texttt{Tools} $\rightarrow$ \texttt{Boards}. Select the appropriate board.
+	\item Install drivers (Windows only). Link: \url{https://github.com/adafruit/Adafruit_Windows_Drivers/releases/download/1.0.0.0/adafruit_drivers.exe}.
+	\end{enumerate}
+
+\end{itemize}
+
+
+\end{document}

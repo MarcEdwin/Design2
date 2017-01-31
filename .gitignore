@@ -1,0 +1,8 @@
+# Temporary Latex files
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.upa
+*.upb

@@ -1,0 +1,58 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{epstopdf}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\usepackage[author={Harish}]{pdfcomment}
+
+\geometry{letterpaper,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+\hypersetup{
+colorlinks,linkcolor=blue,citecolor=violet,urlcolor=magenta
+}
+
+\begin{document}
+
+\title{}
+\author{}
+\date{}
+%\maketitle
+
+\parindent0em
+
+\begin{Form}
+\def\DefaultWidthofChoiceMenu{12pt}
+\TextField[width=20em]{Presenting Team}\\
+
+\vspace{0.5cm}
+\TextField[width=20em]{Evaluating Team} \\
+
+\vspace{0.5cm}
+\TextField[width=10em]{Date}\\
+
+\vspace{2cm}
+
+
+\begin{tabular}{cc}
+\vspace{1cm}
+Overview of SLD & \ChoiceMenu[name=optionC,radio,radiosymbol=\ding{108},width=1em]{}{5,4,3,2,1} \\
+\vspace{1cm}
+Planning of milestones & \ChoiceMenu[name=optionb,radio,radiosymbol=\ding{108},width=1em]{}{5,4,3,2,1} \\
+\vspace{1cm}
+Are immediate next steps concrete? & \ChoiceMenu[name=optiona,radio,radiosymbol=\ding{108},width=1em]{}{5,4,3,2,1} \\
+\vspace{1cm}
+Distribution of effort & \ChoiceMenu[name=optiond,radio,radiosymbol=\ding{108},width=1em]{}{5,4,3,2,1} \\
+\vspace{1cm}
+Presentation Style and clarity & \ChoiceMenu[name=optione,radio,radiosymbol=\ding{108},width=1em]{}{5,4,3,2,1} \\
+\end{tabular}
+\end{Form}
+
+You may also upload a text file named ``comments.txt'' with additional comments. These will be anonymized and provided to the presenting team. 
+
+\end{document}				
+ 
