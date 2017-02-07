@@ -24,7 +24,7 @@ void setup()
   TCCR2B = 0;
   TCNT2  = 0;
 
-  OCR2A = 125;              // 16MHz / (8000*8) - 1 (must be <256)
+  OCR2A = 125;
   TCCR2A |= (1 << WGM21);   // CTC mode
   TCCR2B |= (1 << CS22);    // 256 prescaler
   TIMSK2 |= (1 << OCIE2A);  // enable timer compare interrupt
@@ -32,19 +32,15 @@ void setup()
   interrupts();             // enable all interrupts
 }
 
-ISR(TIMER1_COMPA_vect)      // timer compare interrupt service routine
-{
-  digitalWrite(ledPin1, digitalRead(ledPin1) ^ 1);   // Toggle LED pin. The ^ symbol is a bitwise XOR.
+ISR(TIMER1_COMPA_vect) {    // timer compare interrupt service routine
+  digitalWrite(ledPin1, digitalRead(ledPin1) ^ 1);      // Toggle LED pin. The ^ symbol is a bitwise XOR.
   counter = 0;
 }
 
-ISR(TIMER2_COMPA_vect) {    //timer1 interrupt 8kHz toggles pin 9
+ISR(TIMER2_COMPA_vect) {
   counter++;
   if ((counter > 0) && (counter < 400))
-    //    digitalWrite(ledPin2, digitalRead(LOW));            // toggle LED pin
-    //  else
     digitalWrite(ledPin2, digitalRead(ledPin2) ^ 1);    // toggle LED pin
-
 }
 void loop()
 {
