@@ -24,7 +24,7 @@ void setup()
   TCCR2B = 0;
   TCNT2  = 0;
 
-  OCR2A = 125;
+  OCR2A = 250;
   TCCR2A |= (1 << WGM21);   // CTC mode
   TCCR2B |= (1 << CS22);    // 256 prescaler
   TIMSK2 |= (1 << OCIE2A);  // enable timer compare interrupt
@@ -39,8 +39,10 @@ ISR(TIMER1_COMPA_vect) {    // timer compare interrupt service routine
 
 ISR(TIMER2_COMPA_vect) {
   counter++;
-  if ((counter > 0) && (counter < 400))
+  if ((counter >= 0) && (counter < 199))
     digitalWrite(ledPin2, digitalRead(ledPin2) ^ 1);    // toggle LED pin
+  else if (counter = 200)
+    digitalWrite(ledPin2, LOW);
 }
 void loop()
 {
