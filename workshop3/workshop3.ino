@@ -1,5 +1,5 @@
-#define ledPin1 12
-#define ledPin2 13
+#define ledPin1 13
+#define ledPin2 12
 
 int counter = 0;
 
@@ -9,7 +9,7 @@ void setup()
   pinMode(ledPin2, OUTPUT);
 
   // Initialize timer1
-//  noInterrupts();           // disable all interrupts
+  noInterrupts();           // disable all interrupts
   TCCR1A = 0;
   TCCR1B = 0;
   TCNT1  = 0;
@@ -24,12 +24,12 @@ void setup()
   TCCR2B = 0;
   TCNT2  = 0;
 
-  OCR2A = 249;              // 16MHz / (8000*8) - 1 (must be <256)
+  OCR2A = 125;              // 16MHz / (8000*8) - 1 (must be <256)
   TCCR2A |= (1 << WGM21);   // CTC mode
-  TCCR2B |= (1 << CS21);    // 8 prescaler
+  TCCR2B |= (1 << CS22);    // 256 prescaler
   TIMSK2 |= (1 << OCIE2A);  // enable timer compare interrupt
 
-//  interrupts();             // enable all interrupts
+  interrupts();             // enable all interrupts
 }
 
 ISR(TIMER1_COMPA_vect)      // timer compare interrupt service routine
@@ -40,7 +40,7 @@ ISR(TIMER1_COMPA_vect)      // timer compare interrupt service routine
 
 ISR(TIMER2_COMPA_vect) {    //timer1 interrupt 8kHz toggles pin 9
   counter++;
-  if (counter > 2000)
+  if ((counter > 0) && (counter < 400))
     //    digitalWrite(ledPin2, digitalRead(LOW));            // toggle LED pin
     //  else
     digitalWrite(ledPin2, digitalRead(ledPin2) ^ 1);    // toggle LED pin
@@ -49,4 +49,3 @@ ISR(TIMER2_COMPA_vect) {    //timer1 interrupt 8kHz toggles pin 9
 void loop()
 {
 }
-
