@@ -7,3 +7,7 @@
 *.upa
 *.upb
 *.dvi
+# Temporate Latex files specific to TeXnicCenter
+*.bbl
+*.blg
+*.synctex
