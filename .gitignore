@@ -11,3 +11,5 @@
 *.bbl
 *.blg
 *.synctex
+# macOS files
+.DS_Store
