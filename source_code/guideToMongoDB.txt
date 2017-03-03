@@ -1,0 +1,22 @@
+These are instructions for command line or cmd:
+
+"To start server use : c:\install location path\server\3.4\bin\mongod "
+"if the path has spaces in it, place it in quotations
+
+"to connect to server use : c:\install location path\server\3.4\bin\mongo "
+
+enter "db", to show what databse is currently in use
+enter "show dbs" to see all available databases
+enter "use <database>" to use an existing database or create a new one and use it
+
+MongoDB saves data into collections. this allows us to enter information at random
+	without following the table format.
+files to be imported into the database need to end in a .json format
+
+to import files, open a new cmd windo, 
+and enter "mongoimport --db "database name" --collection "collection name" --drop --file ~"path of file to be imported"
+ 
+--drop will drop existing database with the name, and generate a new one.
+--file specifies file path
+
+db."collectionName".find() will print all items in collection
