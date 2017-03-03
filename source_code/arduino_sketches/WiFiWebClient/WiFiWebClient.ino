@@ -23,8 +23,8 @@
 #include <SPI.h>
 #include <WiFi101.h>
 
-char ssid[] = "MER wifi"; //  your network SSID (name)
-char pass[] = "Exodia12";    // your network password (use for WPA, or use as key for WEP)
+char ssid[] = "AndroidAP"; //  your network SSID (name)
+char pass[] = "bootsandkora";    // your network password (use for WPA, or use as key for WEP)
 int keyIndex = 0;            // your network key Index number (needed only for WEP)
 
 int status = WL_IDLE_STATUS;
