@@ -11,6 +11,10 @@
 \usepackage{subcaption}
 \PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}		% Everything before \usepackage helps with the wrapping of urls
 \usepackage{pdfcomment}
+\usepackage{bookmark}
+\makeatletter
+\renewcommand\@seccntformat[1]{}							% http://tex.stackexchange.com/questions/33696/no-section-numbers-but-still-have-pdf-bookmarks-with-hyperref
+\makeatother
 
 \geometry{
 letterpaper,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in
@@ -128,14 +132,35 @@ Revised the functional diagram and bill of materials.
 \section{Tuesday, March 14, 2017}
 \begin{itemize}
 \item Visited this \href{https://www.adafruit.com/product/3010}{Adafruit} page on everything about the Adafruit Feather M0 WiFi - ATSAMD21 + ATWINC1500 microcontroller.
-\item Googled \textsl{Atsamd21} to learn more about the chip architecture. Clicked on an \href{http://www.atmel.com/products/microcontrollers/arm/sam-d.aspx}{Atmel} page to learn more. More specifically, the Feather features an ATSAMD21G18 ARM Cortex-M0+ processor. The Feather also includes an Atmel ATWINC1500 Wi-Fi network controller.
+\item Googled \textsl{Atsamd21} to learn more about the chip architecture. Clicked on an \href{http://www.atmel.com/products/microcontrollers/arm/sam-d.aspx}{Atmel} page to learn more. More specifically, the Feather features an ATSAMD21G18A ARM Cortex-M0+ processor. The Feather also includes an Atmel ATWINC1500 Wi-Fi network controller.
 \item The datasheet for the ATSAMD21 can be found \href{https://cdn-learn.adafruit.com/assets/assets/000/030/130/original/atmel-42181-sam-d21_datasheet.pdf?1453847579}{here} and a programming guide for the ATWINC1500 can be found \href{https://cdn-learn.adafruit.com/assets/assets/000/030/129/original/atmel-42418-software-programming-guide-for-atwinc1500-wifi-using-samd21-xplained-pro_userguide.pdf?1453847486}{here}.
-\item Google what ASF is; the short answer is the following: the Atmel Software Framework (ASF) is a MCU software library providing a large collection of embedded software for Atmel flash MCUs. More info on the ASF can be found \href{http://www.atmel.com/tools/avrsoftwareframework.aspx}{here}.
+\item Googled what ASF is; the short answer is the following: the Atmel Software Framework (ASF) is a MCU software library providing a large collection of embedded software for Atmel flash MCUs. More info on the ASF can be found \href{http://www.atmel.com/tools/avrsoftwareframework.aspx}{here}.
 \item Googled what an mcu is; it stand for microncontroller unit.
-\item \textbf{Keep reading this} Visited this \href{https://learn.adafruit.com/adafruit-feather-m0-wifi-atwinc1500/pinouts}{Adafruit} page to learn more on the pinouts of the Feather.
+\item Visited this \href{https://learn.adafruit.com/adafruit-feather-m0-wifi-atwinc1500/pinouts}{Adafruit} page to learn more on the pinouts of the Feather.
 \item Googled what UART is; go to this \href{https://learn.sparkfun.com/tutorials/serial-communication/uarts}{Sparkfun} page to learn more. Basically, the universal asynchronous receiver/transmitter (UART) is a block of circuitry responsible for implementing serial communication.
 \end{itemize}
 
 \textbf{To do:} Look into EagleCAD and Fritzing software.
+
+\section{Wednesday, March 15, 2017}
+\begin{itemize}
+\item Go to this \href{https://www.adafruit.com/product/1120}{Adafruit} page to learn more aobut the LSM303DLHC compass and accelerometer.
+\item Go to this \href{https://learn.adafruit.com/lsm303-accelerometer-slash-compass-breakout/assembly-and-wiring}{Adafruit} page for the assembly and wiring of the LSM303.
+\item Downloaded the Adafruit Fritzing Library from this \href{https://github.com/adafruit/Fritzing-Library}{GitHub} repo in order to get access to the LSM303DLHC, Feather, and Adalogger diagrams.
+\item Connected the accelerometer to the microcontroller. The Fritzing object is under the \textsf{fritzing\_objects} folder in the Design 2 Github repo.
+	\begin{itemize}
+	\item Currently having trouble with detecting the sensor!
+	\item Fixed the above problem. Use a lower value for the pullup resistors, like 2.2 k$\Omega$.!
+	\end{itemize}
+\item \href{https://cdn-shop.adafruit.com/datasheets/LSM303DLHC.PDF}{Datasheet} of the LSM303DLHC accelerometer and compass.
+\item Visit this \href{https://learn.adafruit.com/lsm303-accelerometer-slash-compass-breakout/calibration}{Adafruit} page to learn more about the calibration of the accelerometer and compass. There is a calibration tool that can be found \href{http://www.varesano.net/blog/fabio/freeimu-magnetometer-and-accelerometer-calibration-gui-alpha-version-out}{here}
+\end{itemize}
+
+\textbf{To do:}
+\begin{itemize}
+\item Look up the power-saving features of the LSM303DLHC (accelerometer).
+\item Perform interrupts using accelerometer.
+\item Write data to the SD card with the Adalogger breakout board.
+\end{itemize}
 
 \end{document}
