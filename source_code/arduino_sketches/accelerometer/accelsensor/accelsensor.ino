@@ -26,7 +26,7 @@ void displaySensorDetails(void)
 void setup(void)
 {
 #ifndef ESP8266
-  while (!Serial);     // will pause until serial console opens
+  while (!Serial);     // pause until serial console opens
 #endif
   Serial.begin(9600);
 
@@ -42,7 +42,7 @@ void setup(void)
   //  displaySensorDetails();
 }
 
-void loop(void)
+void loop() // can it be changed to void loop()?
 {
   // Get a new sensor event
   sensors_event_t event;
