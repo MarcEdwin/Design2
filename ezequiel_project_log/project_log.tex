@@ -193,6 +193,19 @@ Had a group talk with Harish, here are the notes.
 \item Looked up what direct memory access (DMA) channels were. Short for direct memory access, a technique for transferring data from main memory to a device without passing it through the CPU. Computers that have DMA channels can transfer data to and from devices much more quickly than computers without a DMA channel can. To learn more go to the \href{https://en.wikipedia.org/wiki/Direct_memory_access}{Wikipedia} page.
 \end{itemize}
 
+\section{Monday, March 20, 2017}
+\begin{itemize}
+\item Read more on timer interrupts. I don't undertand much of what the says on timer counters.
+\item Googled timer interrupts on ATSAMD21G and stumbled across this \href{http://www.avdweb.nl/arduino/libraries/samd21-timer.html}{site}. This guy made his own library to abstract interrupts. I will to download and install them.
+	\begin{itemize}
+	\item Downloaded \href{https://github.com/avandalen/avdweb_SAMDtimer}{SAMDtimer} library.
+	\item Also clone the Arduino ZeroTimer library.
+	\item Could not get the example to work!
+	\end{itemize}
+\item Visited this \href{https://learn.adafruit.com/using-atsamd21-sercom-to-add-more-spi-i2c-serial-ports/muxing-it-up}{Adafruit} website with very useful SERCOMM info.
+\item Cloned this \href{https://github.com/drewfish/arduino-ZeroRegs}{repo} that helps you print out the low-level configuration registers for the Arduino Zero and similar boards.
+\end{itemize}
+
 \section{To Do List}
 \begin{itemize}
 \item Look into EagleCAD and \sout{Fritzing software}.
@@ -202,6 +215,11 @@ Had a group talk with Harish, here are the notes.
 \item Take a look at the last three bullet points for March 17, 2017.
 \item Read up on DMA.
 \item Left off on page 28 of \textsl{atmel-42181-sam-d21\_datasheet.pdf}.
+\item \url{https://learn.adafruit.com/adafruit-feather-m0-wifi-atwinc1500/adapting-sketches-to-m0}
+\item \url{https://forum.arduino.cc/index.php?topic=332275.15}
+\item \url{https://gist.github.com/jdneo/43be30d85080b175cb5aed3500d3f989}
+\item \url{https://github.com/arduino/ArduinoCore-samd/issues/136}
+\item \url{https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started}
 \end{itemize}
 
 \end{document}
