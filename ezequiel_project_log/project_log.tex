@@ -202,8 +202,33 @@ Had a group talk with Harish, here are the notes.
 	\item Also clone the Arduino ZeroTimer library.
 	\item Could not get the example to work!
 	\end{itemize}
-\item Visited this \href{https://learn.adafruit.com/using-atsamd21-sercom-to-add-more-spi-i2c-serial-ports/muxing-it-up}{Adafruit} website with very useful SERCOMM info.
+\item Visited this \href{https://learn.adafruit.com/using-atsamd21-sercom-to-add-more-spi-i2c-serial-ports/muxing-it-up}{Adafruit} website with very useful SERCOM info.
 \item Cloned this \href{https://github.com/drewfish/arduino-ZeroRegs}{repo} that helps you print out the low-level configuration registers for the Arduino Zero and similar boards.
+\end{itemize}
+
+\section{Tuesday, March 21, 2017}
+\begin{itemize}
+\item SERCOM 3 is used for I2C.
+\item Tried to understand the SAM D21 datasheet.
+\item  Tried to get the yesterday's library to work.
+	\begin{itemize}
+	\item Cloned \href{https://github.com/avandalen/avdweb_SAMDtimer}{avdweb SAMDtimer} library.
+	\item Cloned \href{https://github.com/adafruit/Adafruit_ZeroTimer}{Arduino ZeroTimer} library.
+	\item Cloned \href{https://github.com/adafruit/Adafruit_ASFcore}{Adafruit ASFcore} library.
+	\item The program compiled but I don't know what pin the PWM signal is being sent to. =(
+	\end{itemize}
+\item This \href{https://forum.arduino.cc/index.php?topic=457720.0}{Arduino Forum} post tells you what the equivalen \textsf{cli} and \textsf{sei} commands are for SAM D21 boards.
+\item Cloned \href{https://github.com/maxbader/arduino_tools}{Arduino tools} repo.
+\item Followed this \href{https://medium.com/@nebsp/smoothly-changing-a-timers-frequency-on-the-arduino-zero-1f6cd285369a#.xl6i5bu18}{guide} related to timer interrupts and tested all the digital output pins.
+\item \url{https://github.com/maxbader/arduino_tools/blob/master/libraries/timer_zero_tc_counter/timer_zero_tc_counter.ino}
+\item \url{http://www.gammon.com.au/interrupts}
+\end{itemize}
+
+\section{Tuesday, March 21, 2017}
+\begin{itemize}
+\item Run \texttt{pip install xbee pyserial}.
+\item Go this \href{https://groups.google.com/forum/#!topic/python-xbee/jdyQ5ev9_vg}{Google Gruops} post to learn how to fix the following error: \textsf{``Unrecognized response packet with id byte {0}''.format(data[0]))
+KeyError: 'Unrecognized response packet with id byte \textbackslash x90'}
 \end{itemize}
 
 \section{To Do List}
@@ -221,5 +246,15 @@ Had a group talk with Harish, here are the notes.
 \item \url{https://github.com/arduino/ArduinoCore-samd/issues/136}
 \item \url{https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started}
 \end{itemize}
+
+\section{Wednesday, March 22, 2017}
+Tasks for next week:
+\begin{enumerate}
+\item Do the same thing we did this past week on the Arduino.
+\item Change the broadcast radius and see what the effect is on the transmission distance.
+\item For a given broadcast radius, check the checksum errors for a few different distances.
+\item Check if ACKs are sent out only when the checksum is good or in general when a fram is received.
+\end{enumerate}
+
 
 \end{document}
