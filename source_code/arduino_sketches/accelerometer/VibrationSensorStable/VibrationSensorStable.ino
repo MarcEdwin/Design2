@@ -32,8 +32,8 @@ void loop() {
   Serial.print(event.acceleration.x); Serial.print("  "); Serial.print(event.acceleration.y); Serial.print("  "); Serial.println(event.acceleration.z);
 
   // Calculate the magnitude
-//  magnitude = sqrt(pow(event.acceleration.x, 2) + pow(event.acceleration.y, 2) + pow(event.acceleration.z, 2));
-//  Serial.println(magnitude);
+  //magnitude = sqrt(pow(event.acceleration.x, 2) + pow(event.acceleration.y, 2) + pow(event.acceleration.z, 2));
+  //Serial.println(magnitude);
 
   delay(25);
 }
