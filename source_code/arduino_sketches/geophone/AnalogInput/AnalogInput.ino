@@ -1,13 +1,20 @@
-int sensorPin = A5;    // select the input pin for the potentiometer
-int sensorValue = 0;  // variable to store the value coming from the sensor
+int geophone_pin = A5;    // input pin for the geophone
+int velocity_reading = 0;  // store reading from the geophone
+
+int velocity_array[250];
 
 void setup() {
-  Serial.begin(9600);
+
+    Serial.begin(9600);
 }
 
 void loop() {
-  // read the value from the sensor:
-  sensorValue = analogRead(sensorPin);
-  Serial.println(sensorValue);
-  delay(30);
+    for(int i=0; i<250; i++) {
+        // read the value from the sensor
+        velocity_reading = analogRead(geophone_pin);
+        velocity_array[i] = velocity_reading;
+        Serial.println(velocity_array[i]);
+        delay(4);
+    }
+    Serial.println("Array is full!");
 }
