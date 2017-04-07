@@ -247,14 +247,42 @@ KeyError: 'Unrecognized response packet with id byte \textbackslash x90'}
 \item \url{https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started}
 \end{itemize}
 
-\section{Wednesday, March 22, 2017}
-Tasks for next week:
-\begin{enumerate}
-\item Do the same thing we did this past week on the Arduino.
-\item Change the broadcast radius and see what the effect is on the transmission distance.
-\item For a given broadcast radius, check the checksum errors for a few different distances.
-\item Check if ACKs are sent out only when the checksum is good or in general when a fram is received.
-\end{enumerate}
+\section{Sunday, March 26, 2017}
+\begin{itemize}
+\item Read an article by \href{http://www.ni.com/white-paper/3807/en/}{NI} on measuring vibrations with accelerometers.
+\item The datasheet of the accelerometer can be found \href{https://cdn-shop.adafruit.com/datasheets/LSM303DLHC.PDF}{here}.
+\item They are basically three components to ground motion: longitudinal or radial (X direction), transversal (Y direction), and vertical (Z direction). \textbf{We should write the XYZ directions clearly outside the sensor housing.}
+\item Read the following pages:
+	\begin{itemize}
+	\item \url{http://en.allexperts.com/q/Construction-Contractors-1093/2008/5/PPV-s-G.htm}
+	\item \url{http://vibrationdamage.com/Vibration_standards.htm}
+	\end{itemize}
+\item Currently working on vibration sensor sketch. \textbf{I will postpone the FFT for later.}	
+\item I'm moving on to writing data to the SD card. The real-time clock (RTC) chip running on the Adalogger FeatherWing is the PCF8523.
+\item \textbf{Configure the Adalogger:}
+	\begin{itemize}
+	\item Install the RTClib by Adafruit library through the library manager in the IDE.
+	\item Set the right time using the example. FYI, it takes about 7 seconds for compilation and uploading of example.
+	\end{itemize}
+	
+\item Adalogger resources:
+	\begin{itemize}
+	\item \href{http://www.nxp.com/documents/data_sheet/PCF8523.pdf}{RTC datasheet}
+	\item \href{https://learn.adafruit.com/adafruit-adalogger-featherwing/using-the-real-time-clock}{Adafruit} page on using the RTC.
+	\end{itemize}
 
+\end{itemize}
+
+\section{Sunday, March 26, 2017}
+\begin{itemize}
+\item Scrapped the SD library in favor of the SdFat library over at \url{https://github.com/greiman/SdFat}.
+\end{itemize}
+
+
+\section{Tuesday -- April 4, 2017}
+\begin{itemize}
+\item Watched this \href{https://www.youtube.com/watch?v=wLlsVXBaQLQ}{YouTube} on how to wire up a speaker with an Arduino.
+\item Followed this \href{https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started}{MS Azure} IoT tutorial of the Adafruit Feather M0.
+\end{itemize}
 
 \end{document}
