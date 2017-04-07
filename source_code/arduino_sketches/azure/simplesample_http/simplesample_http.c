@@ -193,7 +193,7 @@ void simplesample_http_run(void)
                     }
                     else
                     {
-                        myWeather->DeviceId = "myFirstDevice";
+                        myWeather->DeviceId = "feather1";
                         myWeather->WindSpeed = avgWindSpeed + (rand() % 4 + 2);
                         {
                             unsigned char* destination;

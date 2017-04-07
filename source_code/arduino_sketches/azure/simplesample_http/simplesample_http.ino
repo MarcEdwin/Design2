@@ -3,7 +3,7 @@
 
 
 // Use Arduino IDE 1.6.8 or later.
-#define ARDUINO_SAMD_FEATHER_M0
+//#define ARDUINO_SAMD_FEATHER_M0
 
 #include <stdlib.h>
 #include <stdio.h>
