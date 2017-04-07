@@ -1,7 +1,8 @@
+Visit this [Microsoft](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson3-run-azure-blink) site for more info. You can also read iot-hub.pdf starting on page 331 to get all the lessons from the website.
+
 # Lesson 3: Part 2
 
 ## Run a sample application to send device-to-cloud messages
-Visit this [Microsoft](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-adafruit-feather-m0-wifi-kit-arduino-lesson3-run-azure-blink) site for more info.
 
 ### Get your IoT hub and device connection strings
 The device connection string is used to connect your Arduino board to your IoT hub. The IoT hub connection string is used to connect your IoT hub to the device identity that represents your Arduino board in the IoT hub.
