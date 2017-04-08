@@ -8,7 +8,7 @@
 extern "C" {
 #endif
 
-    void simplesample_http_run(void);
+	void simplesample_http_run(void);
 
 #ifdef __cplusplus
 }
