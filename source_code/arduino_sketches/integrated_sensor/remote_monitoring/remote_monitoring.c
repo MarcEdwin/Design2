@@ -5,7 +5,7 @@
 
 #include "AzureIoTHub.h"
 #include "sdk/schemaserializer.h"
-#include "bme280.h"
+#include "lsm303dlhc.h"
 
 /* CODEFIRST_OK is the new name for IOT_AGENT_OK. The follow #ifndef helps during the name migration. Remove it when the migration ends. */
 #ifndef  IOT_AGENT_OK
@@ -27,12 +27,12 @@ ascii_char_ptr, DeviceID,
 _Bool, HubEnabledState
 );
 
-DECLARE_MODEL(Thermostat,
+DECLARE_MODEL(Accelerometer,
 
-    /* Event data (temperature, external temperature and humidity) */
-    WITH_DATA(int, Temperature),
-    WITH_DATA(int, ExternalTemperature),
-    WITH_DATA(int, Humidity),
+    /* Event data (x-axis acceleration, y-axis acceleration, and z-axis acceleration) */
+    WITH_DATA(float, AccelerationX),
+    WITH_DATA(float, AccelerationZ),
+    WITH_DATA(float, AccelerationY),
     WITH_DATA(ascii_char_ptr, DeviceId),
 
     /* Device Info - This is command metadata + some extra fields */
@@ -43,23 +43,31 @@ DECLARE_MODEL(Thermostat,
     WITH_DATA(ascii_char_ptr_no_quotes, Commands),
 
     /* Commands implemented by the device */
-    WITH_ACTION(SetTemperature, int, temperature),
-    WITH_ACTION(SetHumidity, int, humidity)
+    WITH_ACTION(SetAccelerationX, float, accel_x),
+    WITH_ACTION(SetAccelerationY, float, accel_y),
+    WITH_ACTION(SetAccelerationZ, float, accel_z)
 );
 
 END_NAMESPACE(Contoso);
 
-EXECUTE_COMMAND_RESULT SetTemperature(Thermostat* thermostat, int temperature)
+EXECUTE_COMMAND_RESULT SetAccelerationX(Accelerometer* accelerometer, float accel_x)
 {
-    LogInfo("Received temperature %d\r\n", temperature);
-    thermostat->Temperature = temperature;
+    LogInfo("Received x-axis acceleration %d\r\n", accel_x);
+    accelerometer->AccelerationX = accel_x;
     return EXECUTE_COMMAND_SUCCESS;
 }
 
-EXECUTE_COMMAND_RESULT SetHumidity(Thermostat* thermostat, int humidity)
+EXECUTE_COMMAND_RESULT SetAccelerationY(Accelerometer* accelerometer, float accel_y)
 {
-    LogInfo("Received humidity %d\r\n", humidity);
-    thermostat->Humidity = humidity;
+    LogInfo("Received y-axis acceleration %d\r\n", accel_y);
+    accelerometer->AccelerationY = accel_y;
+    return EXECUTE_COMMAND_SUCCESS;
+}
+
+EXECUTE_COMMAND_RESULT SetAccelerationZ(Accelerometer* accelerometer, float accel_z)
+{
+    LogInfo("Received z-axis acceleration %d\r\n", accel_z);
+    accelerometer->AccelerationZ = accel_z;
     return EXECUTE_COMMAND_SUCCESS;
 }
 
@@ -187,7 +195,7 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT IoTHubMessage(IOTHUB_MESSAGE_HANDLE mess
 
 void remote_monitoring_run(void)
 {
-        initBme();
+        initLsm();
 
         srand((unsigned int)time(NULL));
         if (serializer_init(NULL) != SERIALIZER_OK)
@@ -220,8 +228,8 @@ void remote_monitoring_run(void)
                 }
 #endif // MBED_BUILD_TIMESTAMP
 
-                Thermostat* thermostat = CREATE_MODEL_INSTANCE(Contoso, Thermostat);
-                if (thermostat == NULL)
+                Accelerometer* accelerometer = CREATE_MODEL_INSTANCE(Contoso, Accelerometer);
+                if (accelerometer == NULL)
                 {
                     LogInfo("Failed on CREATE_MODEL_INSTANCE\r\n");
                 }
@@ -229,7 +237,7 @@ void remote_monitoring_run(void)
                 {
                     STRING_HANDLE commandsMetadata;
 
-                    if (IoTHubClient_LL_SetMessageCallback(iotHubClientHandle, IoTHubMessage, thermostat) != IOTHUB_CLIENT_OK)
+                    if (IoTHubClient_LL_SetMessageCallback(iotHubClientHandle, IoTHubMessage, accelerometer) != IOTHUB_CLIENT_OK)
                     {
                         LogInfo("unable to IoTHubClient_SetMessageCallback\r\n");
                     }
@@ -244,11 +252,11 @@ void remote_monitoring_run(void)
 
                         /* send the device info upon startup so that the cloud app knows
                         what commands are available and the fact that the device is up */
-                        thermostat->ObjectType = "DeviceInfo";
-                        thermostat->IsSimulatedDevice = false;
-                        thermostat->Version = "1.0";
-                        thermostat->DeviceProperties.HubEnabledState = true;
-                        thermostat->DeviceProperties.DeviceID = (char*)deviceId;
+                        accelerometer->ObjectType = "DeviceInfo";
+                        accelerometer->IsSimulatedDevice = false;
+                        accelerometer->Version = "1.0";
+                        accelerometer->DeviceProperties.HubEnabledState = true;
+                        accelerometer->DeviceProperties.DeviceID = (char*)deviceId;
 
                         commandsMetadata = STRING_new();
                         if (commandsMetadata == NULL)
@@ -258,7 +266,7 @@ void remote_monitoring_run(void)
                         else
                         {
                             /* Serialize the commands metadata as a JSON string before sending */
-                            if (SchemaSerializer_SerializeCommandMetadata(GET_MODEL_HANDLE(Contoso, Thermostat), commandsMetadata) != SCHEMA_SERIALIZER_OK)
+                            if (SchemaSerializer_SerializeCommandMetadata(GET_MODEL_HANDLE(Contoso, Accelerometer), commandsMetadata) != SCHEMA_SERIALIZER_OK)
                             {
                                 LogInfo("Failed serializing commands metadata\r\n");
                             }
@@ -266,10 +274,10 @@ void remote_monitoring_run(void)
                             {
                                 unsigned char* buffer;
                                 size_t bufferSize;
-                                thermostat->Commands = (char*)STRING_c_str(commandsMetadata);
+                                accelerometer->Commands = (char*)STRING_c_str(commandsMetadata);
 
                                 /* Here is the actual send of the Device Info */
-                                if (SERIALIZE(&buffer, &bufferSize, thermostat->ObjectType, thermostat->Version, thermostat->IsSimulatedDevice, thermostat->DeviceProperties, thermostat->Commands) != IOT_AGENT_OK)
+                                if (SERIALIZE(&buffer, &bufferSize, accelerometer->ObjectType, accelerometer->Version, accelerometer->IsSimulatedDevice, accelerometer->DeviceProperties, accelerometer->Commands) != IOT_AGENT_OK)
                                 {
                                     LogInfo("Failed serializing\r\n");
                                 }
@@ -283,27 +291,26 @@ void remote_monitoring_run(void)
                             STRING_delete(commandsMetadata);
                         }
 
-                        thermostat->DeviceId = (char*)deviceId;
+                        accelerometer->DeviceId = (char*)deviceId;
                         int sendCycle = 10;
                         int currentCycle = 0;
                         while (1)
                         {
                             if(currentCycle >= sendCycle) {
-                                float Temp;
-                                float Humi;
-                                getNextSample(&Temp, &Humi);
-                                //thermostat->Temperature = 50 + (rand() % 10 + 2);
-                                thermostat->Temperature = (Temp>600)?600:(int)round(Temp);
-                                thermostat->ExternalTemperature = 55 + (rand() % 5 + 2);
-                                //thermostat->Humidity = 50 + (rand() % 8 + 2);
-                                thermostat->Humidity = (Humi>100)?100:(int)round(Humi);
+                                float AccelX;
+                                float AccelY;
+                                float AccelZ;
+                                getNextSample(&AccelX, &AccelY, &AccelZ);
+                                accelerometer->AccelerationX = AccelX;
+                                accelerometer->AccelerationY = AccelY;
+                                accelerometer->AccelerationZ = AccelZ;
                                 currentCycle = 0;
                                 unsigned char*buffer;
                                 size_t bufferSize;
 
-                                LogInfo("Sending sensor value Temperature = %d, Humidity = %d\r\n", thermostat->Temperature, thermostat->Humidity);
+                                LogInfo("Sending sensor value AccelerationX = %d, AccelerationY = %d, AccelerationZ = %d\r\n", accelerometer->AccelerationX, accelerometer->AccelerationY, accelerometer->AccelerationZ);
 
-                                if (SERIALIZE(&buffer, &bufferSize, thermostat->DeviceId, thermostat->Temperature, thermostat->Humidity, thermostat->ExternalTemperature) != IOT_AGENT_OK)
+                                if (SERIALIZE(&buffer, &bufferSize, accelerometer->DeviceId, accelerometer->AccelerationX, accelerometer->AccelerationY, accelerometer->AccelerationZ) != IOT_AGENT_OK)
                                 {
                                     LogInfo("Failed sending sensor value\r\n");
                                 }
@@ -319,7 +326,7 @@ void remote_monitoring_run(void)
                         }
                     }
 
-                    DESTROY_MODEL_INSTANCE(thermostat);
+                    DESTROY_MODEL_INSTANCE(accelerometer);
                 }
                 IoTHubClient_LL_Destroy(iotHubClientHandle);
             }

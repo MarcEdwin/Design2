@@ -7,8 +7,8 @@
 /**
  * WiFi setup
  */
-#define IOT_CONFIG_WIFI_SSID            "MER"
-#define IOT_CONFIG_WIFI_PASSWORD        "Exodia12"
+#define IOT_CONFIG_WIFI_SSID            "AndroidAP"
+#define IOT_CONFIG_WIFI_PASSWORD        "bootsandkora"
 
 /**
  * Find under Microsoft Azure IoT Suite -> DEVICES -> <your device> -> Device Details and Authentication Keys
