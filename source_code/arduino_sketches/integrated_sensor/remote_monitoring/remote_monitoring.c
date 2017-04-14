@@ -31,8 +31,8 @@ DECLARE_MODEL(Accelerometer,
 
     /* Event data (x-axis acceleration, y-axis acceleration, and z-axis acceleration) */
     WITH_DATA(float, AccelerationX),
-    WITH_DATA(float, AccelerationZ),
     WITH_DATA(float, AccelerationY),
+    WITH_DATA(float, AccelerationZ),
     WITH_DATA(ascii_char_ptr, DeviceId),
 
     /* Device Info - This is command metadata + some extra fields */
