@@ -7,15 +7,15 @@
 /**
  * WiFi setup
  */
-#define IOT_CONFIG_WIFI_SSID            "AndroidAP"
-#define IOT_CONFIG_WIFI_PASSWORD        "bootsandkora"
+#define IOT_CONFIG_WIFI_SSID            "Hi"
+#define IOT_CONFIG_WIFI_PASSWORD        "bye"
 
 /**
  * Find under Microsoft Azure IoT Suite -> DEVICES -> <your device> -> Device Details and Authentication Keys
  * String containing Hostname, Device Id & Device Key in the format:
  *  "HostName=<host_name>;DeviceId=<device_id>;SharedAccessKey=<device_key>"    
  */
-#define IOT_CONFIG_CONNECTION_STRING    "HostName=smart-vibes-project.azure-devices.net;DeviceId=feather1;SharedAccessKey=zpbfO4ZTRjNfJZ9lKvobL9XINnxnm+7yvCINY44Nd1s="
+#define IOT_CONFIG_CONNECTION_STRING    "HostName=smart-vibes-project-2aec79.azure-devices.net;DeviceId=feather1;SharedAccessKey=duzxMDi8zaqDCrnHVc4Sg+iMGUA42q9XcIREcGqZo9g="
 
 /** 
  * Choose the transport protocol
