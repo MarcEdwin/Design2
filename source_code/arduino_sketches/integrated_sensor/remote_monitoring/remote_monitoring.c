@@ -292,7 +292,8 @@ void remote_monitoring_run(void)
                         }
 
                         accelerometer->DeviceId = (char*)deviceId;
-                        int sendCycle = 10;
+//                        int sendCycle = 10;
+                        int sendCycle = 1;
                         int currentCycle = 0;
                         while (1)
                         {
