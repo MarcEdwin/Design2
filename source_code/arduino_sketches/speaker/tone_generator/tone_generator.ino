@@ -27,7 +27,7 @@
                              // but these tones are so simple it won't make a difference.  44.1khz is
                              // standard CD quality sound.
 
-#define AMPLITUDE     10000   // Set the amplitude of generated waveforms.  This controls how loud
+#define AMPLITUDE     15000   // Set the amplitude of generated waveforms.  This controls how loud
                              // the signals are, and can be any value from 0 to 65535.  Start with
                              // a low value like 5000 or less to prevent damaging speakers!
 
@@ -46,7 +46,8 @@
 #define B4_HZ      493.88
 
 // Define a C-major scale to play all the notes up and down.
-float scale[] = { C4_HZ, D4_HZ, E4_HZ, F4_HZ, G4_HZ, A4_HZ, B4_HZ, A4_HZ, G4_HZ, F4_HZ, E4_HZ, D4_HZ, C4_HZ };
+//float scale[] = { C4_HZ, D4_HZ, E4_HZ, F4_HZ, G4_HZ, A4_HZ, B4_HZ, A4_HZ, G4_HZ, F4_HZ, E4_HZ, D4_HZ, C4_HZ };
+float scale[] = { C4_HZ, C4_HZ, G4_HZ, G4_HZ, A4_HZ, A4_HZ, G4_HZ, G4_HZ, F4_HZ, F4_HZ, E4_HZ, E4_HZ, D4_HZ, D4_HZ, C4_HZ, C4_HZ };
 
 // Store basic waveforms in memory.
 int16_t sine[WAV_SIZE]     = {0};
@@ -151,13 +152,13 @@ void setup() {
 }
 
 void loop() {
-  Serial.println("Sine wave");
-  for (int i=0; i<sizeof(scale)/sizeof(float); ++i) {
-    // Play the note for a quarter of a second.
-    playWave(sine, WAV_SIZE, scale[i], 0.25);
-    // Pause for a tenth of a second between notes.
-    delay(100);
-  }
+//  Serial.println("Sine wave");
+//  for (int i=0; i<sizeof(scale)/sizeof(float); ++i) {
+//    // Play the note for a quarter of a second.
+//    playWave(sine, WAV_SIZE, scale[i], 0.25);
+//    // Pause for a tenth of a second between notes.
+//    delay(100);
+//  }
   Serial.println("Sawtooth wave");
   for (int i=0; i<sizeof(scale)/sizeof(float); ++i) {
     // Play the note for a quarter of a second.
@@ -165,18 +166,18 @@ void loop() {
     // Pause for a tenth of a second between notes.
     delay(100);
   }
-  Serial.println("Triangle wave");
-  for (int i=0; i<sizeof(scale)/sizeof(float); ++i) {
-    // Play the note for a quarter of a second.
-    playWave(triangle, WAV_SIZE, scale[i], 0.25);
-    // Pause for a tenth of a second between notes.
-    delay(100);
-  }
-  Serial.println("Square wave");
-  for (int i=0; i<sizeof(scale)/sizeof(float); ++i) {
-    // Play the note for a quarter of a second.
-    playWave(square, WAV_SIZE, scale[i], 0.25);
-    // Pause for a tenth of a second between notes.
-    delay(100);
-  }
+//  Serial.println("Triangle wave");
+//  for (int i=0; i<sizeof(scale)/sizeof(float); ++i) {
+//    // Play the note for a quarter of a second.
+//    playWave(triangle, WAV_SIZE, scale[i], 0.25);
+//    // Pause for a tenth of a second between notes.
+//    delay(100);
+//  }
+//  Serial.println("Square wave");
+//  for (int i=0; i<sizeof(scale)/sizeof(float); ++i) {
+//    // Play the note for a quarter of a second.
+//    playWave(square, WAV_SIZE, scale[i], 0.25);
+//    // Pause for a tenth of a second between notes.
+//    delay(100);
+//  }
 }
