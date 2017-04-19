@@ -7,17 +7,18 @@
 /**
  * WiFi setup
  */
-#define IOT_CONFIG_WIFI_SSID            "Hi"
-#define IOT_CONFIG_WIFI_PASSWORD        "bye"
+#define IOT_CONFIG_WIFI_SSID            ""
+#define IOT_CONFIG_WIFI_PASSWORD        ""
 
 /**
  * Find under Microsoft Azure IoT Suite -> DEVICES -> <your device> -> Device Details and Authentication Keys
  * String containing Hostname, Device Id & Device Key in the format:
- *  "HostName=<host_name>;DeviceId=<device_id>;SharedAccessKey=<device_key>"    
+ *  "HostName=<host_name>;DeviceId=<device_id>;SharedAccessKey=<device_key>"
  */
-#define IOT_CONFIG_CONNECTION_STRING    "HostName=smart-vibes-project-2aec79.azure-devices.net;DeviceId=feather1;SharedAccessKey=duzxMDi8zaqDCrnHVc4Sg+iMGUA42q9XcIREcGqZo9g="
 
-/** 
+#define IOT_CONFIG_CONNECTION_STRING ""
+
+/**
  * Choose the transport protocol
  */
 #define IOT_CONFIG_MQTT                 // uncomment this line for MQTT
