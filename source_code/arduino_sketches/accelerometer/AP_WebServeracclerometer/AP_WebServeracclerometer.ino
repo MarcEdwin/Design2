@@ -157,7 +157,7 @@ void loop() {
             // the content of the HTTP response follows the header:
             client.print("Click <a href=\"/H\">here</a> turn the LED on<br>");
             client.print("Click <a href=\"/L\">here</a> turn the LED off<br>");
-            client.print("The ACR value:" magnitude);
+            client.print("The ACR value:", magnitude);
             // The HTTP response ends with another blank line:
             client.println();
             // break out of the while loop:

@@ -7,8 +7,8 @@
 /**
  * WiFi setup
  */
-#define IOT_CONFIG_WIFI_SSID            ""
-#define IOT_CONFIG_WIFI_PASSWORD        ""
+#define IOT_CONFIG_WIFI_SSID            "MER"
+#define IOT_CONFIG_WIFI_PASSWORD        "Exodia12"
 
 /**
  * Find under Microsoft Azure IoT Suite -> DEVICES -> <your device> -> Device Details and Authentication Keys
@@ -16,12 +16,12 @@
  *  "HostName=<host_name>;DeviceId=<device_id>;SharedAccessKey=<device_key>"
  */
 
-#define IOT_CONFIG_CONNECTION_STRING ""
-
+//#define IOT_CONFIG_CONNECTION_STRING "HostName=TestIOT946.azure-devices.net;DeviceId=feather;SharedAccessKey=hJQabSm2Iev+Yk0NjHzuq3lgCljj5oO2206cy1znyuI="
+#define IOT_CONFIG_CONNECTION_STRING "HostName=TestIOT946.azure-devices.net;DeviceId=feather;SharedAccessKey=d6rKr5sxaGdrzg8li+/cewPr+K6BiljaCBJ+GaAwwEU="
 /**
  * Choose the transport protocol
  */
 #define IOT_CONFIG_MQTT                 // uncomment this line for MQTT
-// #define IOT_CONFIG_HTTP              // uncomment this line for HTTP
+//#define IOT_CONFIG_HTTP              // uncomment this line for HTTP
 
 #endif /* IOT_CONFIGS_H */

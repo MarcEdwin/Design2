@@ -47,7 +47,8 @@
 
 // Define a C-major scale to play all the notes up and down.
 //float scale[] = { C4_HZ, D4_HZ, E4_HZ, F4_HZ, G4_HZ, A4_HZ, B4_HZ, A4_HZ, G4_HZ, F4_HZ, E4_HZ, D4_HZ, C4_HZ };
-float scale[] = { C4_HZ, C4_HZ, G4_HZ, G4_HZ, A4_HZ, A4_HZ, G4_HZ, G4_HZ, F4_HZ, F4_HZ, E4_HZ, E4_HZ, D4_HZ, D4_HZ, C4_HZ, C4_HZ };
+//float scale[] = { C4_HZ, C4_HZ, G4_HZ, G4_HZ, A4_HZ, A4_HZ, G4_HZ, G4_HZ, F4_HZ, F4_HZ, E4_HZ, E4_HZ, D4_HZ, D4_HZ, C4_HZ, C4_HZ };
+float scale[] = { C4_HZ };
 
 // Store basic waveforms in memory.
 int16_t sine[WAV_SIZE]     = {0};
