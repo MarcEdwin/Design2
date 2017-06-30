@@ -1,11 +1,10 @@
-int geophone_pin = A5;    // input pin for the geophone
-int velocity_reading = 0;  // store reading from the geophone
+int geophone_pin = A5; // input pin for the geophone
+int velocity_reading = 0; // store reading from the geophone
 
 int velocity_array[250];
 
 void setup() {
-
-    Serial.begin(9600);
+    Serial.begin(57600);
 }
 
 void loop() {
@@ -14,7 +13,7 @@ void loop() {
         velocity_reading = analogRead(geophone_pin);
         velocity_array[i] = velocity_reading;
         Serial.println(velocity_array[i]);
-        delay(4);
+        delay(25);
     }
     Serial.println("Array is full!");
 }

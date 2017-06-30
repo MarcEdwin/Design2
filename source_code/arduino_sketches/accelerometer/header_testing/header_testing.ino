@@ -1,6 +1,6 @@
 #include "lsm303dlhc.h"
 
-float AccelX, AccelY, AccelZ;
+float accelX, accelY, accelZ;
 
 void setup()
 {
@@ -20,11 +20,11 @@ void setup()
 
 void loop()
 {
-	getNextSample(&AccelX, &AccelY, &AccelZ);
-	Serial.print(AccelX); Serial.print("    ");
-	Serial.print(AccelY); Serial.print("    ");
-	Serial.println(AccelZ);
-	delay(500);
+	getNextSample(&accelX, &accelY, &accelZ);
+	Serial.print(accelX); Serial.print("    ");
+	Serial.print(accelY); Serial.print("    ");
+	Serial.println(accelZ);
+	delay(100);
 //	SERCOM0->USART.DATA.reg = B01010101;
 //	delay(1000);
 }
